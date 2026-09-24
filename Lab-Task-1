@@ -1,0 +1,44 @@
+import numpy as np
+
+# --- Part 1: 1D Array Slicing ---
+arr = np.array([1, 2, 3, 4, 5])  # 1D array
+print(arr)
+
+print(arr[0])  # Output: 1
+print(arr[0:2])  # Output: [1 2]
+print(arr[0:5:2])  # Output: [1 3 5] (Starting index : ending index : step)
+print(arr[:5])  # Output: [1 2 3 4 5]
+
+# --- Part 2: 2D Array Slicing ---
+arr1 = np.array([[1, 2, 3], [3, 4, 5], [7, 8, 9]])  # 2D Array
+print(arr1)
+
+print(arr1[0, 1])  # Row index 0, Col index 1 -> Output: 2
+print(arr1[:, 2])  # All rows, Col index 2 -> Output: [3 5 9]
+print(arr1[0:2, 0:2])  # First 2 rows and first 2 columns -> Output: [[1 2], [3 4]]
+print(
+    arr1[0:3:2, 0:3:2]
+)  # Step 2 slicing -> Output: [[1 3], [7 9]] (Row 0, 2 & Col 0, 2)
+print(arr1[0:2, 1:3])  # First 2 rows and last 2 columns -> Output: [[2 3], [4 5]]
+
+# --- Part 3: Reshape Operations ---
+arr_reshape = np.array([1, 2, 3, 4, 5, 6])  # 1D array with 6 elements
+print(arr_reshape)
+
+# 2 Rows, 3 Columns
+newarr1 = arr_reshape.reshape(2, 3)
+print(newarr1)
+
+# 3 Rows, 2 Columns
+newarr2 = arr_reshape.reshape(3, 2)
+print(newarr2)
+
+# 1 Row, 6 Columns (2D array format)
+newarr3 = arr_reshape.reshape(1, 6)
+print(newarr3)
+
+# --- Part 4: 3D Reshape Fix ---
+# 6 elements cannot be reshaped to (3, 2, 2) which requires 3*2*2 = 12 elements.
+# Changing to (3, 2, 1) or changing the input array size to 12.
+ar1 = arr_reshape.reshape(3, 2, 1)  # 3 blocks, 2 rows, 1 column
+print(ar1)
